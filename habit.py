@@ -119,6 +119,7 @@ class Habit:
                     self.data.append((row[0], dateutil.parser.isoparse(row[1]), row[2]))
 
         self.parse_data()
+        self.load_state()
 
     def parse_data(self):
         """

@@ -101,7 +101,8 @@ def test_check_off_and_restart(testing_habits):
 
 def test_fail_tracking(testing_habits):
     assert testing_habits['run'].fail_count == 1
-    assert testing_habits['read'].fail_count == 1
+    assert testing_habits['read'].fail_count == 2
 
     assert testing_habits['run'].last_fail == start_date + datetime.timedelta(days=21)
-    assert testing_habits['read'].last_fail == start_date + datetime.timedelta(days=13)
+    #the read habit is broken on the day of testing (as the last check-off is designed to have been two days before.)
+    assert testing_habits['read'].last_fail.date() == datetime.date.today()

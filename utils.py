@@ -1,12 +1,12 @@
+"""
+This module holds several miscellaneous functions I've had to rely on for this project.
+"""
+
 import datetime
 import tkinter as tk
 
 import dateutil.relativedelta
 import dateutil.parser
-
-"""
-This module holds several "utility" functions I've had to rely on for this project.
-"""
 
 
 def add_midnight(date):
@@ -21,26 +21,6 @@ def add_midnight(date):
     """
 
     return datetime.datetime.combine(date, datetime.datetime.min.time())
-
-
-def parse_list_for_ui(list, int_element):
-    """
-    Parses list for use in the best and worst habits part of the analytics module.
-
-    Args:
-        list (list): a list of lists (every sublist contains the habit name, period, and streak/breaks)
-        int_element (int): the index of the element inside the inner list which is an int. Needed for conversion.
-    Returns:
-        final_string (string): a text paragraph loaded into the Tkinter text widgets, containing
-        the prepared and final form of the information
-    """
-    new_list = []
-    for inner_list in list:
-        #convert streak back to a string with appropriate formatting
-        inner_list[int_element] = str(inner_list[int_element])
-        new_list.append(" - ".join(inner_list))
-    final_string = "\n".join(new_list)
-    return final_string
 
 
 def error_popup(text: str):

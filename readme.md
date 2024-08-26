@@ -3,7 +3,8 @@
 A simple habit tracker application that allows you to enter habits you would like to keep yourself accountable for.
 Supports daily, weekly and monthly habits, and provides extensive analytical capabilities, allowing you to look deep into your own behavior through an interactive and straightforward GUI powered by Tkinter.
 
-Also contains the Habit class module, which is the central feature of the project. Designed to be used with a SQLite3 database.
+Also contains the Habit class module, which is the central feature of the project.
+The habit class is designed to be used with a SQLite3 database but can also be used without.
 
 ## Features
 
@@ -57,6 +58,9 @@ All files related to testing can be found inside the "test" directory.
 
 First run the test_habit.py unit test.
 
+After that, run the test_analytics.py unit test.
+
 Then, run the test_db_integration.py integration test.
 
-After that you may run the tracker_test.py script, which will open an identical copy of the habit tracker itself; except this one is connected to the test database and filled with five predefined habits and four weeks of tracking data.
+Finally, you may run the tracker_test.py script, which will open an identical copy of the habit tracker itself, except this one is connected to the test database and filled with five predefined habits and four weeks of tracking data.
+This is the way to see the GUI loaded with data and, indeed, test the viewing of habit history within the application.

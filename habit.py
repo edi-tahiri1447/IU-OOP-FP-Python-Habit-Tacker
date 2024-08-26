@@ -21,13 +21,12 @@ class Habit:
     Log, where check-off dates, breakage dates, and restart dates are stored.
 
     Attributes:
-        db_name (string):
-        (Class attribute)
+        db_name (string) (Class attribute):
         This is the name of the SQLite database the habits read and write to.
         Please make sure to overwrite the Habit.db_name and connect it to your own database file before use.
 
         name (string):
-        The name of the habit. In the SQLite3 setting, this has to be unique (as it is used as the primary key
+        The name of the habit. In the SQLite 3 setting, this has to be unique (as it is used as the primary key
         of the Habits table) and cannot exceed 32 characters due to database design.
 
         period (string):
@@ -94,7 +93,7 @@ class Habit:
         else:
             self.name = name
 
-        if period in ["Daily", "Weekly", "Monthly"]:
+        if period in ['Daily', 'Weekly', 'Monthly']:
             self.period = period
         else:
             raise ValueError("Please make sure the periodicity is either daily, weekly or monthly!")
@@ -114,7 +113,7 @@ class Habit:
             self.data = []
             with sqlite3.connect(self.db_name) as conn:
                 cur = conn.cursor()
-                #load date from SQLite database into data list
+                # load date from SQLite database into data list
                 for row in cur.execute("SELECT * FROM Log WHERE Name=? ORDER BY Time ASC", (self.name,)).fetchall():
                     self.data.append((row[0], dateutil.parser.isoparse(row[1]), row[2]))
 
@@ -137,28 +136,28 @@ class Habit:
         self.last_fail = None
         self.last_restart = None
 
-        #loop through the data list
+        # loop through the data list
         for row in self.data:
             match row[2]:
                 case 'Success':
-                    #increment streak, update last_success
+                    # increment streak, update last_success
                     self.streak += 1
 
                     self.last_success = row[1]
                 case 'Restart':
-                    #take streak up until this point, append into list of streak values, then reset
+                    # take streak up until this point, append into list of streak values, then reset
                     self.streaks.append(self.streak)
                     self.streak = 0
 
                     self.last_restart = row[1]
                 case 'Failure':
-                    #same as with restart, except also increment fail_count and update last_fail
+                    # same as with restart, except also increment fail_count and update last_fail
                     self.streaks.append(self.streak)
                     self.streak = 0
 
                     self.fail_count += 1
                     self.last_fail = row[1]
-        #if done looping without any resets, load streak into list regardless
+        # if done looping without any resets, load streak into list regardless
         self.streaks.append(self.streak)
 
         if self.streaks:
@@ -195,19 +194,19 @@ class Habit:
                                (self.last_restart if self.last_restart is not None else datetime.datetime.min))
 
         match self.period:
-            case "Daily":
+            case 'Daily':
                 differential = int((datetime.date.today() - compare_time.date()).days)
-            case "Weekly":
+            case 'Weekly':
                 differential = utils.diff_of_cw(datetime.datetime.now(), compare_time)
-            case "Monthly":
+            case 'Monthly':
                 differential = utils.diff_of_cm(datetime.datetime.now(), compare_time)
 
         if differential == 1:
-            self.state = "Ready"
+            self.state = 'Ready'
         elif differential < 1:
-            self.state = "Unready"
+            self.state = 'Unready'
         elif differential > 1:
-            self.state = "Broken"
+            self.state = 'Broken'
 
             if self.data == [] or self.data[-1][2] != 'Failure':
                 self.data.append((self.name, datetime.datetime.now(), 'Failure'))

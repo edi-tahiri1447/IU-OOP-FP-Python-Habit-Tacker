@@ -16,6 +16,8 @@ The habit class is designed to be used with a SQLite3 database but can also be u
 
 ## Installation
 
+To install dependencies, run the following in your Python terminal:
+
 ```shell
 pip install -r requirements.txt
 ```
@@ -54,7 +56,7 @@ If you're using the habit class, you can access the history of the habit through
 
 ## Testing
 
-To test the functionality, please run the following command. This will run all the rests at once: 
+To test the functionality, please run the following command in your Python terminal (only after having installed the dependencies, as Pytest is one of them.) This will run all the rests at once: 
 
 ```shell
 pytest @test_suite.txt

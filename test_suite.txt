@@ -1,0 +1,3 @@
+test/test_habit.py
+test/test_analytics.py
+test/test_db_integration.py

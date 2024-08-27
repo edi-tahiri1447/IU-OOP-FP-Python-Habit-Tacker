@@ -20,7 +20,7 @@ The tables here can be reloaded by running the test_db_integration.py module aga
 """
 
 # declaring test database as the habit database for this module
-Habit.db_name = "test_db.db"
+Habit.db_name = r"test\test_db.db"
 
 if __name__ == "__main__":
 

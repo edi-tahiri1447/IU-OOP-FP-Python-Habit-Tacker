@@ -10,13 +10,13 @@ import pytest
 import sqlite3
 
 from habit import Habit
-from test_habit import testing_data
+from .test_habit import testing_data
 import utils
 
 start_date = utils.add_midnight(datetime.date.today() - datetime.timedelta(days=28))
 iso_start_date = start_date.isoformat()
 
-Habit.db_name = "test_db.db"
+Habit.db_name = r"test\test_db.db"
 conn = sqlite3.connect(Habit.db_name)
 cur = conn.cursor()
 
@@ -37,10 +37,6 @@ def test_db_init(testing_data, db_habit_metadata):
     converted_testing_data = []
     for dataset in testing_data.values():
         converted_testing_data.append([(x[0], utils.add_midnight(x[1]).isoformat(), x[2]) for x in dataset])
-
-    with conn:
-        cur.execute("DROP TABLE Log")
-        cur.execute("DROP TABLE Habit")
 
     Habit.initialize_db()
 

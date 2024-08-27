@@ -2,7 +2,7 @@
 
 Please note that the "habit history" feature is not part of the analytics module, but rather part of the GUI,
 as the habit history is rendered by accessing the Habit.data attribute with no further g needed.
-To see how that works with example data, please run tracker_test.py and enter the analytics window.
+To see how that works with example data, please run sample_tracker.py and enter the analytics window.
 
 Keep in mind that the changes made to the habits in the db integration test (restarting 'Take a walk' and creating
 'Drink green tea') are not persisted for this unit test."""
@@ -10,7 +10,7 @@ Keep in mind that the changes made to the habits in the db integration test (res
 import pytest
 
 from habit import Habit
-from test_habit import testing_data, testing_habits
+from .test_habit import testing_data, testing_habits
 import analytics
 
 

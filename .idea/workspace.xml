@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="afb6cb0a-1b52-4fe6-9c26-267019a3337b" name="Changes" comment="Made habits load state on init" />
+    <list default="true" id="afb6cb0a-1b52-4fe6-9c26-267019a3337b" name="Changes" comment="Separated much of the analytics module functionality into a new file, added unit test for that file&#10;&#10;Updated documentation" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,6 +61,7 @@
     "Python.new_db_dataloader.executor": "Run",
     "Python.new_habit.executor": "Run",
     "Python.new_main.executor": "Run",
+    "Python.python -m pytest test_habit.py test_analytics.py test_db_integration.py.executor": "Run",
     "Python.sample.executor": "Run",
     "Python.sample_db.executor": "Run",
     "Python.sample_habit.executor": "Run",
@@ -81,13 +82,36 @@
       <recent name="C:\Users\Edi\PycharmProjects\Habit Tracker" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Edi\Documents\GitHub\IU-Python-OOP-FP-Project---Habit-Tracker" />
       <recent name="C:\Users\Edi\PycharmProjects\Habit Tracker\test" />
       <recent name="C:\Users\Edi\PycharmProjects\Habit Tracker" />
       <recent name="C:\Users\Edi\PycharmProjects\Habit Tracker\new_ver" />
       <recent name="C:\Users\Edi\PycharmProjects\pythonProject1" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.python -m pytest test_habit.py test_analytics.py test_db_integration.py">
+    <configuration name="python -m pytest test_habit.py test_analytics.py test_db_integration.py" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Python OOP and FP - Habit Tracker" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="pytest" />
+      <option name="PARAMETERS" value="test_habit.py test_analytics.py test_db_integration.py" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="true" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="test_db_interface" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Python OOP and FP - Habit Tracker" />
       <option name="ENV_FILES" value="" />
@@ -123,13 +147,28 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/tracker_test.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Edi\Documents\GitHub\IU-Python-OOP-FP-Project---Habit-Tracker\tracker_test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_db_integration" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="Python OOP and FP - Habit Tracker" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_db_integration&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <configuration name="Python tests for test_db_integration.test_habit_loading" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
@@ -162,50 +201,20 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_db_integration.test_initialize_db" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="Python OOP and FP - Habit Tracker" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_db_integration.test_initialize_db&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for test.test_habit" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="Python OOP and FP - Habit Tracker" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test.test_habit&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
     <list>
+      <item itemvalue="Python.python -m pytest test_habit.py test_analytics.py test_db_integration.py" />
       <item itemvalue="Python.tracker_test" />
       <item itemvalue="Python.test_db_interface" />
       <item itemvalue="Python tests.Python tests for test_db_integration.test_habit_loading" />
       <item itemvalue="Python tests.Python tests for test_db_integration.test_habit_writing" />
-      <item itemvalue="Python tests.Python tests for test_db_integration.test_initialize_db" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.python -m pytest test_habit.py test_analytics.py test_db_integration.py" />
         <item itemvalue="Python.tracker_test" />
         <item itemvalue="Python.test_db_interface" />
         <item itemvalue="Python tests.Python tests for test_db_integration.test_habit_writing" />
         <item itemvalue="Python tests.Python tests for test_db_integration.test_habit_loading" />
-        <item itemvalue="Python tests.Python tests for test_db_integration.test_initialize_db" />
       </list>
     </recent_temporary>
   </component>
@@ -228,15 +237,6 @@
     <servers />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/test/test_db_integration.py</url>
-          <line>70</line>
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="__exception__[2]" />

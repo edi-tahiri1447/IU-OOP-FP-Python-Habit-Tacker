@@ -9,7 +9,7 @@ import analytics
 import utils
 
 # declare database file we'll be using in this module
-Habit.db_name = 'habit_db.db'
+Habit.db_name = 'main_db.db'
 
 if __name__ == "__main__":
 

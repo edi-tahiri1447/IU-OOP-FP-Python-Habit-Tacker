@@ -54,13 +54,11 @@ If you're using the habit class, you can access the history of the habit through
 
 ## Testing
 
-All files related to testing can be found inside the "test" directory.
+To test the functionality, please run the following command. This will run all the rests at once: 
 
-First run the test_habit.py unit test.
-
-After that, run the test_analytics.py unit test.
-
-Then, run the test_db_integration.py integration test.
+```shell
+python -m pytest test_habit.py test_analytics.py test_db_integration.py
+```
 
 Finally, you may run the tracker_test.py script, which will open an identical copy of the habit tracker itself, except this one is connected to the test database and filled with five predefined habits and four weeks of tracking data.
 This is the way to see the GUI loaded with data and, indeed, test the viewing of habit history within the application.

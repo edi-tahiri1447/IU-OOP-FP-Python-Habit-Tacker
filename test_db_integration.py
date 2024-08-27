@@ -27,12 +27,17 @@ def db_habit_metadata():
         ('Take a walk', 'Daily', iso_start_date),
         ('Run', 'Weekly', iso_start_date),
         ('Read for 15 minutes', 'Daily', iso_start_date),
-        ('Pay tuition', 'Monthly', datetime.datetime(year=2024, month=6, day=10)),
+        ('Pay tuition', 'Monthly', datetime.datetime(year=2024, month=6, day=10).isoformat()),
         ('Meditate', 'Weekly', iso_start_date)
     ]
 
 
 def test_db_init(testing_data, db_habit_metadata):
+    # converts the imported testing data into ISO-format strings, as default converter from SQLite 3 is deprecated.
+    converted_testing_data = []
+    for dataset in testing_data.values():
+        converted_testing_data.append([(x[0], utils.add_midnight(x[1]).isoformat(), x[2]) for x in dataset])
+
     with conn:
         cur.execute("DROP TABLE Log")
         cur.execute("DROP TABLE Habit")
@@ -44,7 +49,7 @@ def test_db_init(testing_data, db_habit_metadata):
         cur.execute("DELETE FROM Log")
 
         cur.executemany("INSERT INTO Habit Values (?, ?, ?)", db_habit_metadata)
-        for dataset in testing_data.values():
+        for dataset in converted_testing_data:
             cur.executemany("INSERT INTO Log VALUES (?, ?, ?)", dataset)
 
     assert cur.execute("SELECT * FROM Habit").fetchall() != []

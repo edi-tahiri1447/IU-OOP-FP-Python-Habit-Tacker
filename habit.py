@@ -274,10 +274,12 @@ class Habit:
             cur = conn.cursor()
             # if habit does not exist in Habit table, enter it there
             if cur.execute("SELECT * FROM Habit WHERE Name=?", (self.name,)).fetchone() is None:
-                cur.execute("INSERT INTO Habit VALUES (?, ?, ?)", (self.name, self.period, self.start_date))
+                # as the default SQLite 3 converter is deprecated, conversions to iso format happen
+                cur.execute("INSERT INTO Habit VALUES (?, ?, ?)", (self.name, self.period, self.start_date.isoformat()))
 
             cur.execute("DELETE FROM Log WHERE Name=?", (self.name,))
-            cur.executemany("INSERT INTO Log VALUES (?, ?, ?)", self.data)
+            # list comprehension to convert self.data into iso format to write into SQL database
+            cur.executemany("INSERT INTO Log VALUES (?, ?, ?)", [(x[0], x[1].isoformat(), x[2]) for x in self.data])
 
     def __str__(self):
         return self.name
